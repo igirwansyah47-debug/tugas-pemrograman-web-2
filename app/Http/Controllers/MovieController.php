@@ -12,30 +12,30 @@ class MovieController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        $search = $request->search;
-        $category = $request->category;
+{
+    $search = $request->search;
+    $category = $request->category;
 
-        $movies = Movie::with('category')
+    $movies = Movie::with('category')
 
-            ->when($search, function ($query) use ($search) {
+        ->when($search, function ($query) use ($search) {
 
-                return $query->where('title', 'like', "%{$search}%");
+            return $query->where('title', 'like', "%{$search}%");
 
-            })
+        })
 
-            ->when($category, function ($query) use ($category) {
+        ->when($category, function ($query) use ($category) {
 
-                return $query->where('category_id', $category);
+            return $query->where('category_id', $category);
 
-            })
+        })
 
-            ->paginate(5);
+        ->paginate(5);
 
-        $categories = Category::all();
+    $categories = Category::all();
 
-        return view('movies.index', compact('movies', 'categories'));
-    }
+    return view('movies.index', compact('movies', 'categories'));
+}
 
     /**
      * Show the form for creating a new resource.
