@@ -58,6 +58,7 @@
             <th>Tahun</th>
             <th>Director</th>
             <th>Durasi</th>
+            <th>Aksi</th>
         </tr>
 
         @foreach ($movies as $movie)
@@ -74,6 +75,16 @@
                 <td>{{ $movie->director }}</td>
 
                 <td>{{ $movie->duration }}</td>
+
+                <td>
+
+                    <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning btn-sm">
+
+                        Edit
+
+                    </a>
+
+                </td>
 
             </tr>
         @endforeach

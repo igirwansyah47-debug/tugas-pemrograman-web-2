@@ -8,6 +8,18 @@
         @csrf
         @method('PUT')
 
+        <select name="category_id" class="form-control mb-2">
+
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}" {{ $movie->category_id == $category->id ? 'selected' : '' }}>
+
+                    {{ $category->name }}
+
+                </option>
+            @endforeach
+
+        </select>
+
         <input type="text" name="title" value="{{ $movie->title }}" class="form-control mb-2">
 
         <input type="text" name="genre" value="{{ $movie->genre }}" class="form-control mb-2">
