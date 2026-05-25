@@ -35,6 +35,12 @@
 
                 <td>
 
+                    <a href="{{ route('categories.show', $category->id) }}" class="btn btn-info btn-sm">
+
+                        Detail
+
+                    </a>
+
                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
 
                         Edit
