@@ -78,6 +78,12 @@
 
                 <td>
 
+                    <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-info btn-sm">
+
+                        Detail
+
+                    </a>
+
                     <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning btn-sm">
 
                         Edit
