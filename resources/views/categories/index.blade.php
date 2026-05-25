@@ -28,7 +28,9 @@
             <tr>
 
                 <td>{{ $category->name }}</td>
+
                 <td>{{ $category->description }}</td>
+
                 <td>{{ $category->status }}</td>
 
                 <td>
@@ -38,6 +40,19 @@
                         Edit
 
                     </a>
+
+                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data?')">
+
+                            Delete
+
+                        </button>
+
+                    </form>
 
                 </td>
 
