@@ -41,7 +41,7 @@
                         @csrf
                         @method('DELETE')
 
-                        <button class="btn btn-danger btn-sm">
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
 
                             Delete
 
