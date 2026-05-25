@@ -3,15 +3,15 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Movie;
+use App\Models\Category;
 
-class MovieSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Movie::factory(20)->create();
+        Category::factory(5)->create();
     }
 }
