@@ -84,6 +84,19 @@
 
                     </a>
 
+                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST" style="display:inline;">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data?')">
+
+                            Delete
+
+                        </button>
+
+                    </form>
+
                 </td>
 
             </tr>
