@@ -33,30 +33,11 @@
 
                 <td>
 
-                    <a href="{{ route('categories.show', $category->id) }}" class="btn btn-info btn-sm">
-
-                        Detail
-
-                    </a>
-
                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
 
                         Edit
 
                     </a>
-
-                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;">
-
-                        @csrf
-                        @method('DELETE')
-
-                        <button class="btn btn-danger btn-sm">
-
-                            Delete
-
-                        </button>
-
-                    </form>
 
                 </td>
 
