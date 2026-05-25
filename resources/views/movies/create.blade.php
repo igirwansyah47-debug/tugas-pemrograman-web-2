@@ -7,6 +7,22 @@
 
         @csrf
 
+        <select name="category_id" class="form-control mb-2">
+
+            <option value="">
+                Pilih Category
+            </option>
+
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">
+
+                    {{ $category->name }}
+
+                </option>
+            @endforeach
+
+        </select>
+
         <input type="text" name="title" class="form-control mb-2" placeholder="Judul">
 
         <input type="text" name="genre" class="form-control mb-2" placeholder="Genre">
