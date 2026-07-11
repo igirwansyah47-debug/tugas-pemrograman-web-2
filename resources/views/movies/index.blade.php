@@ -7,9 +7,19 @@
 
     </h1>
 
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
     <a href="{{ route('movies.create') }}" class="btn btn-primary mb-3">
 
         + Tambah Movie
+
+    </a>
+
+    <a href="{{ route('movies.trash') }}" class="btn btn-outline-danger mb-3">
+
+        🗑️ Trash
 
     </a>
 
@@ -64,6 +74,7 @@
                 <th>Genre</th>
                 <th>Tahun</th>
                 <th>Director</th>
+                <th>Synopsis</th>
                 <th>Durasi</th>
                 <th width="220">Aksi</th>
 
@@ -103,6 +114,12 @@
                     <td>
 
                         {{ $movie->director }}
+
+                    </td>
+
+                    <td>
+
+                        {{ Str::limit($movie->synopsis, 50) }}
 
                     </td>
 
