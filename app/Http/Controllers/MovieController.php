@@ -67,9 +67,19 @@ class MovieController extends Controller
 
     public function update(Request $request, Movie $movie)
     {
-        $movie->update($request->all());
+        DB::beginTransaction();
 
-        return redirect()->route('movies.index');
+        try {
+            $movie->update($request->all());
+
+            DB::commit();
+
+            return redirect()->route('movies.index')->with('success', 'Movie berhasil diupdate.');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Gagal update movie: ' . $e->getMessage());
+        }
     }
 
     public function destroy(Movie $movie)
