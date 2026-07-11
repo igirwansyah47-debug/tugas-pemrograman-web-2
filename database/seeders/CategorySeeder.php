@@ -12,6 +12,34 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(5)->create();
+        Category::create([
+            'name' => 'Action',
+            'description' => 'Film aksi dan pertarungan',
+            'status' => 'Active'
+        ]);
+
+        Category::create([
+            'name' => 'Horror',
+            'description' => 'Film horor dan supranatural',
+            'status' => 'Active'
+        ]);
+
+        Category::create([
+            'name' => 'Sci-Fi',
+            'description' => 'Film science fiction',
+            'status' => 'Active'
+        ]);
+
+        Category::create([
+            'name' => 'Drama',
+            'description' => 'Film drama kehidupan',
+            'status' => 'Active'
+        ]);
+
+        Category::create([
+            'name' => 'Animation',
+            'description' => 'Film animasi keluarga',
+            'status' => 'Active'
+        ]);
     }
 }

@@ -1,25 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Data Movie</h1>
+    <h1 class="mb-4">
+
+        🎬 Data Movie
+
+    </h1>
 
     <a href="{{ route('movies.create') }}" class="btn btn-primary mb-3">
 
-        Tambah Movie
+        + Tambah Movie
 
     </a>
 
-    <form method="GET" class="row mb-3">
+    <form method="GET" class="row mb-4">
 
-        <div class="col-md-4">
+        <div class="col-md-5">
 
-            <input type="text" name="search" class="form-control" placeholder="Search movie">
+            <input type="text" name="search" class="form-control" placeholder="Cari judul movie...">
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
 
-            <select name="category" class="form-control">
+            <select name="category" class="form-select">
 
                 <option value="">
                     Semua Category
@@ -37,9 +41,9 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
 
-            <button class="btn btn-success">
+            <button class="btn btn-success w-100">
 
                 Filter
 
@@ -49,64 +53,98 @@
 
     </form>
 
-    <table class="table table-bordered">
+    <table class="table table-striped table-bordered align-middle">
 
-        <tr>
-            <th>Category</th>
-            <th>Judul</th>
-            <th>Genre</th>
-            <th>Tahun</th>
-            <th>Director</th>
-            <th>Durasi</th>
-            <th>Aksi</th>
-        </tr>
+        <thead class="table-dark">
 
-        @foreach ($movies as $movie)
             <tr>
 
-                <td>{{ $movie->category->name }}</td>
-
-                <td>{{ $movie->title }}</td>
-
-                <td>{{ $movie->genre }}</td>
-
-                <td>{{ $movie->year }}</td>
-
-                <td>{{ $movie->director }}</td>
-
-                <td>{{ $movie->duration }}</td>
-
-                <td>
-
-                    <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-info btn-sm">
-
-                        Detail
-
-                    </a>
-
-                    <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning btn-sm">
-
-                        Edit
-
-                    </a>
-
-                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST" style="display:inline;">
-
-                        @csrf
-                        @method('DELETE')
-
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data?')">
-
-                            Delete
-
-                        </button>
-
-                    </form>
-
-                </td>
+                <th>Category</th>
+                <th>Judul</th>
+                <th>Genre</th>
+                <th>Tahun</th>
+                <th>Director</th>
+                <th>Durasi</th>
+                <th width="220">Aksi</th>
 
             </tr>
-        @endforeach
+
+        </thead>
+
+        <tbody>
+
+            @foreach ($movies as $movie)
+                <tr>
+
+                    <td>
+
+                        {{ $movie->category ? $movie->category->name : '-' }}
+
+                    </td>
+
+                    <td>
+
+                        {{ $movie->title }}
+
+                    </td>
+
+                    <td>
+
+                        {{ $movie->genre }}
+
+                    </td>
+
+                    <td>
+
+                        {{ $movie->year }}
+
+                    </td>
+
+                    <td>
+
+                        {{ $movie->director }}
+
+                    </td>
+
+                    <td>
+
+                        {{ $movie->duration }} menit
+
+                    </td>
+
+                    <td>
+
+                        <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-info btn-sm">
+
+                            Detail
+
+                        </a>
+
+                        <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-warning btn-sm">
+
+                            Edit
+
+                        </a>
+
+                        <form action="{{ route('movies.destroy', $movie->id) }}" method="POST" style="display:inline;">
+
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data?')">
+
+                                Delete
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+            @endforeach
+
+        </tbody>
 
     </table>
 
