@@ -88,4 +88,19 @@ class MovieController extends Controller
 
         return redirect()->route('movies.index');
     }
+
+    public function trash()
+    {
+        $movies = Movie::onlyTrashed()->paginate(5);
+
+        return view('movies.trash', compact('movies'));
+    }
+
+    public function restore($id)
+    {
+        $movie = Movie::onlyTrashed()->findOrFail($id);
+        $movie->restore();
+
+        return redirect()->route('movies.trash')->with('success', 'Movie berhasil direstore.');
+    }
 }
