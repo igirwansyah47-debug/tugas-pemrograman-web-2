@@ -86,7 +86,7 @@ class MovieController extends Controller
     {
         $movie->delete();
 
-        return redirect()->route('movies.index');
+        return redirect()->route('movies.index')->with('success', 'Movie berhasil dihapus.');
     }
 
     public function trash()
@@ -102,5 +102,13 @@ class MovieController extends Controller
         $movie->restore();
 
         return redirect()->route('movies.trash')->with('success', 'Movie berhasil direstore.');
+    }
+
+    public function forceDelete($id)
+    {
+        $movie = Movie::onlyTrashed()->findOrFail($id);
+        $movie->forceDelete();
+
+        return redirect()->route('movies.trash')->with('success', 'Movie berhasil dihapus permanen.');
     }
 }
